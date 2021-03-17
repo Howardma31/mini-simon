@@ -9,6 +9,7 @@ var pattern = [];
 var progress = 0;
 var gamePlaying = false;
 var tonePlaying = false;
+var audioPlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
 var clueHoldTime = 1000; //how long to hold each clue's light/sound
@@ -44,23 +45,24 @@ function clearButton(btn){
 function playSingleClue(btn){
   if(gamePlaying){
     lightButton(btn);
-    playTone(btn,clueHoldTime);
+    playAudio(btn,clueHoldTime);
     setTimeout(clearButton,clueHoldTime,btn);
   }
 }
 
 function playClueSequence(){
   guessCounter = 0;
-  decreaseFactor = 0.92;
+  decreaseFactor = 0.88;
+  clueHoldTime = 1000;
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i = 0; i <= progress; i++){ // for each clue that is revealed so far
-    console.log("play single clue: " + pattern[i] + " in " + delay + "ms")
-    setTimeout(playSingleClue,delay,pattern[i]) // set a timeout to play that clue
-    delay += clueHoldTime 
+    console.log("play single clue: " + pattern[i] + " in " + delay + "ms");
+    setTimeout(playSingleClue,delay,pattern[i]); // set a timeout to play that clue
+    delay += clueHoldTime; 
     delay += cluePauseTime;
     clueHoldTime = clueHoldTime * decreaseFactor;
     if(decreaseFactor < 1){
-      decreaseFactor += 0.01;
+      decreaseFactor += 0.03;
     }
   }
 }
@@ -124,9 +126,29 @@ function resetLives() {
   }
 }
 
-async function setImageVisible(id, visible) {
+function setImageVisible(id, visible) {
     var img = document.getElementById(id);
     img.style.visibility = (visible ? 'visible' : 'hidden');
+}
+
+function playAudio(btn, len){
+  startAudio(btn);
+  setTimeout(function(){
+    stopAudio(btn)
+  },len)
+}
+function startAudio(btn) {
+  if (!audioPlaying) {
+    audioPlaying = true;
+    document.getElementById("audio"+btn).play();
+    setImageVisible("image"+btn, true);
+  }
+}
+function stopAudio(btn) {
+  document.getElementById("audio"+btn).pause();
+  document.getElementById("audio"+btn).currentTime = 0;
+  audioPlaying = false;
+  setImageVisible("image"+btn, false);
 }
 
 // Sound Synthesis Functions
@@ -151,8 +173,8 @@ function startTone(btn){
     o.frequency.value = freqMap[btn]
     g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
     tonePlaying = true
+    setImageVisible("image"+btn, true);
   }
-  setImageVisible("image"+btn, true);
 }
 function stopTone(btn){
   g.gain.setTargetAtTime(0,context.currentTime + 0.05,0.025)
