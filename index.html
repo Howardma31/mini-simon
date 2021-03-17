@@ -17,7 +17,7 @@
     <h1>Mini Simon</h1>
     
     <p>
-      Welcome to the game! Repeat the pattern back to win the game! You have 3 lives!
+      Welcome to the game! Repeat the pattern back to win the game! You only have 3 lives!
     </p>
     
     <div id="gameInfoArea">
@@ -28,18 +28,30 @@
         Stop
       </button>
       
-      <div id="life1" class="square"></div>
-      <div id="life2" class="square"></div>
-      <div id="life3" class="square"></div>
+      <div id="life1" class="life"></div>
+      <div id="life2" class="life"></div>
+      <div id="life3" class="life"></div>
     </div>
     
     <div id="gameButtonArea">
-      <button id="button1" onclick="guess(1)" onmousedown="startTone(1)" onmouseup="stopTone()"></button>
-      <button id="button2" onclick="guess(2)" onmousedown="startTone(2)" onmouseup="stopTone()"></button>
-      <button id="button3" onclick="guess(3)" onmousedown="startTone(3)" onmouseup="stopTone()"></button>
-      <button id="button4" onclick="guess(4)" onmousedown="startTone(4)" onmouseup="stopTone()"></button>
-      <button id="button5" onclick="guess(5)" onmousedown="startTone(5)" onmouseup="stopTone()"></button>
-      <button id="button6" onclick="guess(6)" onmousedown="startTone(6)" onmouseup="stopTone()"></button>
+      <button id="button1" onclick="guess(1)" onmousedown="startTone(1)" onmouseup="stopTone(1)">
+        <img id="image1" src="https://cdn.glitch.com/1bbf7e6a-cebb-483d-b403-06643b1566ef%2FPink%20IMAGE.jpg?v=1615966815415">
+      </button>
+      <button id="button2" onclick="guess(2)" onmousedown="startTone(2)" onmouseup="stopTone(2)">
+        <img id="image2" src="https://cdn.glitch.com/1bbf7e6a-cebb-483d-b403-06643b1566ef%2FBlue%20image.jpg?v=1615965669048">
+      </button>
+      <button id="button3" onclick="guess(3)" onmousedown="startTone(3)" onmouseup="stopTone(3)">
+        <img id="image3" src="https://cdn.glitch.com/1bbf7e6a-cebb-483d-b403-06643b1566ef%2Fnew%20green.jpg?v=1615967493480">
+      </button>
+      <button id="button4" onclick="guess(4)" onmousedown="startTone(4)" onmouseup="stopTone(4)">
+        <img id="image4" src="https://cdn.glitch.com/1bbf7e6a-cebb-483d-b403-06643b1566ef%2Flight%20yellow.jpg?v=1615967758134">
+      </button>
+      <button id="button5" onclick="guess(5)" onmousedown="startTone(5)" onmouseup="stopTone(5)">
+        <img id="image5" src="https://cdn.glitch.com/1bbf7e6a-cebb-483d-b403-06643b1566ef%2FOrange%20Image.jpg?v=1615967058522">
+      </button>
+      <button id="button6" onclick="guess(6)" onmousedown="startTone(6)" onmouseup="stopTone(6)">
+        <img id="image6" src="https://cdn.glitch.com/1bbf7e6a-cebb-483d-b403-06643b1566ef%2FPurple%20Image.jpg?v=1615967263819">
+      </button>
     </div>
     
     

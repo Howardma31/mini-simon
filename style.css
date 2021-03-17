@@ -11,7 +11,7 @@ h1 {
   font-family: verdana, arial, sans-serif;
 }
 
-.square {
+.life {
   height: 25px;
   width: 25px;
   background-color: limegreen;
@@ -21,19 +21,24 @@ h1 {
   margin-top: 8px;
 }
 
-.square.lost {
+.life.lost {
   background-color: firebrick;
 }
 
 #gameInfoArea {
   display: flex;
   justify-content: flex-start;
-  offset
 }
 
 button {
   padding: 10px;
   border-radius: 10px;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  visibility: hidden;
 }
 
 #startBtn {

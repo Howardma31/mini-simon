@@ -123,6 +123,12 @@ function resetLives() {
     document.getElementById("life"+i).classList.remove("lost");
   }
 }
+
+async function setImageVisible(id, visible) {
+    var img = document.getElementById(id);
+    img.style.visibility = (visible ? 'visible' : 'hidden');
+}
+
 // Sound Synthesis Functions
 const freqMap = {
   1: 270,
@@ -137,7 +143,7 @@ function playTone(btn,len){
   g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
   tonePlaying = true
   setTimeout(function(){
-    stopTone()
+    stopTone(btn)
   },len)
 }
 function startTone(btn){
@@ -146,10 +152,12 @@ function startTone(btn){
     g.gain.setTargetAtTime(volume,context.currentTime + 0.05,0.025)
     tonePlaying = true
   }
+  setImageVisible("image"+btn, true);
 }
-function stopTone(){
-    g.gain.setTargetAtTime(0,context.currentTime + 0.05,0.025)
-    tonePlaying = false
+function stopTone(btn){
+  g.gain.setTargetAtTime(0,context.currentTime + 0.05,0.025)
+  tonePlaying = false
+  setImageVisible("image"+btn, false);
 }
 
 //Page Initialization
