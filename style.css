@@ -55,15 +55,15 @@ button {
 }
 
 #button5 {
-  background: light;
+  background: orange;
 }
 #button5:active, #button5.lit {
-  background: yellow;
+  background: sienna;
 }
 
 #button6 {
-  background: orange;
+  background: plum;
 }
 #button6:active, #button6.lit {
-  background: yellow;
+  background: darkviolet;
 }
