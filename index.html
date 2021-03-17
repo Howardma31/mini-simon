@@ -17,15 +17,21 @@
     <h1>Mini Simon</h1>
     
     <p>
-      Welcome to the game! Repeat the pattern back to win the game!
+      Welcome to the game! Repeat the pattern back to win the game! You have 3 lives!
     </p>
     
-    <button id="startBtn" onclick="startGame()">
-      Start
-    </button>
-    <button id="stopBtn" class="hidden" onclick="stopGame()">
-      Stop
-    </button>
+    <div id="gameInfoArea">
+      <button id="startBtn" onclick="startGame()">
+        Start
+      </button>
+      <button id="stopBtn" class="hidden" onclick="stopGame()">
+        Stop
+      </button>
+      
+      <div id="life1" class="square"></div>
+      <div id="life2" class="square"></div>
+      <div id="life3" class="square"></div>
+    </div>
     
     <div id="gameButtonArea">
       <button id="button1" onclick="guess(1)" onmousedown="startTone(1)" onmouseup="stopTone()"></button>
