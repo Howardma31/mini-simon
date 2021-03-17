@@ -1,10 +1,10 @@
 # Pre-work - Mini Simon
 
-Mini Simon is a Light & Sound Memory game to apply for CodePath's SITE Program. 
+**Mini Simon** is a Light & Sound Memory game to apply for CodePath's SITE Program. 
 
-Submitted by: Howard Ma
+Submitted by: **Howard Ma**
 
-Time spent: **#** hours spent in total
+Time spent: **4.5** hours spent in total
 
 Link to project: (insert your link here, should start with https://glitch.com...)
 
@@ -28,13 +28,13 @@ The following **optional** features are implemented:
 * [x] Playback speeds up on each turn
 * [x] Computer picks a different pattern each time the game is played
 * [x] Player only loses after 3 mistakes (instead of on the first mistake)
-* [ ] Game button appearance change goes beyond color (e.g. add an image)
+* [x] Game button appearance change goes beyond color (e.g. add an image)
 * [ ] Game button sound is more complex than a single tone (e.g. an audio file, a chord, a sequence of multiple tones)
 * [ ] User has a limited amount of time to enter their guess on each turn
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app!
+- [x] Visuals for 3 lives are displayed
 
 ## Video Walkthrough
 
@@ -47,7 +47,7 @@ Here's a walkthrough of implemented user stories:
 [YOUR ANSWER HERE]
 
 2. What was a challenge you encountered in creating this submission (be specific)? How did you overcome it? (recommended 200 - 400 words) 
-[YOUR ANSWER HERE]
+Game button appearance shifting button. Button keeps on ringing after start game.
 
 3. What questions about web development do you have after completing your submission? (recommended 100 - 300 words) 
 [YOUR ANSWER HERE]
