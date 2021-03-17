@@ -2,6 +2,7 @@
 const cluePauseTime = 333; //how long to pause in between clues
 const nextClueWaitTime = 1000; //how long to wait before starting playback of the clue sequence
 const patternLength = 8; // how long the pattern is
+const lifeCounter = 3; // number of lives
 
 //Global Variables
 var pattern = [];
@@ -30,6 +31,7 @@ function stopGame(){
   gamePlaying = false
   document.getElementById("startBtn").classList.remove("hidden");
   document.getElementById("stopBtn").classList.add("hidden");
+  resetLives();
 }
 
 function lightButton(btn){
@@ -96,9 +98,10 @@ function guess(btn){
   } else {
     //Guess was incorrect
     mistakeCounter++;
-    if(mistakeCounter >= 3){
+    document.getElementById("life"+mistakeCounter).classList.add("lost");
+    if(mistakeCounter >= lifeCounter){
       //GAME OVER: LOSE!
-      loseGame();
+      setTimeout(loseGame, 100);
     }
   }
 }
@@ -115,6 +118,11 @@ function populatePattern() {
   }
 }
 
+function resetLives() {
+  for(let i = 1; i <= lifeCounter; i++) {
+    document.getElementById("life"+i).classList.remove("lost");
+  }
+}
 // Sound Synthesis Functions
 const freqMap = {
   1: 270,

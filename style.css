@@ -11,9 +11,33 @@ h1 {
   font-family: verdana, arial, sans-serif;
 }
 
+.square {
+  height: 25px;
+  width: 25px;
+  background-color: limegreen;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: -4px;
+  margin-top: 8px;
+}
+
+.square.lost {
+  background-color: firebrick;
+}
+
+#gameInfoArea {
+  display: flex;
+  justify-content: flex-start;
+  offset
+}
+
 button {
   padding: 10px;
   border-radius: 10px;
+}
+
+#startBtn {
+  margin-right: -1px;
 }
 
 #gameButtonArea > button {
@@ -27,10 +51,10 @@ button {
 }
 
 #button1 {
-  background: lightgreen;
+  background: pink;
 }
 #button1:active, #button1.lit {
-  background: green;
+  background: red;
 }
 
 #button2 {
@@ -41,10 +65,10 @@ button {
 }
 
 #button3 {
-  background: pink;
+  background: lightgreen;
 }
 #button3:active, #button3.lit {
-  background: red;
+  background: green;
 }
 
 #button4 {
