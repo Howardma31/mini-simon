@@ -12,9 +12,12 @@ var tonePlaying = false;
 var audioPlaying = false;
 var volume = 0.5;  //must be between 0.0 and 1.0
 var guessCounter = 0;
-var clueHoldTime = 1000; //how long to hold each clue's light/sound
+var clueHoldTime = 1200; //how long to hold each clue's light/sound
 var decreaseFactor = 0.8;
 var mistakeCounter = 0;
+var timeRemaining = 10;
+var timer;
+var t;
 
 function startGame(){
   //initialize game variables
@@ -30,9 +33,11 @@ function startGame(){
 
 function stopGame(){
   gamePlaying = false
+  clearInterval(timer);
   document.getElementById("startBtn").classList.remove("hidden");
   document.getElementById("stopBtn").classList.add("hidden");
   resetLives();
+  resetTimer();
 }
 
 function lightButton(btn){
@@ -52,8 +57,9 @@ function playSingleClue(btn){
 
 function playClueSequence(){
   guessCounter = 0;
-  decreaseFactor = 0.88;
-  clueHoldTime = 1000;
+  decreaseFactor = 0.80;
+  clueHoldTime = 1200;
+  timeRemaining = 10;
   let delay = nextClueWaitTime; //set delay to initial wait time
   for(let i = 0; i <= progress; i++){ // for each clue that is revealed so far
     console.log("play single clue: " + pattern[i] + " in " + delay + "ms");
@@ -65,6 +71,7 @@ function playClueSequence(){
       decreaseFactor += 0.03;
     }
   }
+  setTimeout(setTimer, delay - 500);
 }
 
 function loseGame(){
@@ -87,10 +94,12 @@ function guess(btn){
     if(guessCounter == progress){
       if(progress == pattern.length - 1){
         //GAME OVER: WIN!
+        resetTimer();
         winGame();
       } else {
         //Pattern correct. Add next segment
         progress++;
+        resetTimer();
         playClueSequence();
       }
     } else {
@@ -103,6 +112,7 @@ function guess(btn){
     document.getElementById("life"+mistakeCounter).classList.add("lost");
     if(mistakeCounter >= lifeCounter){
       //GAME OVER: LOSE!
+      resetTimer();
       setTimeout(loseGame, 100);
     }
   }
@@ -150,6 +160,24 @@ function stopAudio(btn) {
   audioPlaying = false;
   setImageVisible("image"+btn, false);
 }
+
+function setTimer(){
+  document.getElementById('timerDisplay').innerHTML = timeRemaining;
+  if (timeRemaining == 0) {
+    loseGame();
+    clearInterval(timer);
+  } else {
+    timeRemaining--;
+    t = setTimeout("setTimer()", 1000);
+  }
+}
+
+function resetTimer() {
+  // resets countdown
+  clearTimeout(t);
+  timeRemaining = 10;
+  document.getElementById('timerDisplay').innerHTML = timeRemaining;
+};
 
 // Sound Synthesis Functions
 const freqMap = {

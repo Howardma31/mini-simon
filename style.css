@@ -25,6 +25,13 @@ h1 {
   background-color: firebrick;
 }
 
+#timerDisplay {
+  font-size: 15px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
 #gameInfoArea {
   display: flex;
   justify-content: flex-start;
